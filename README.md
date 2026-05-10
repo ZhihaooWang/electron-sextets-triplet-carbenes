@@ -25,3 +25,53 @@ Reproduction workflow for the TDDFT/TDA screening layer from the paper
 This repository currently contains the approved bootstrap design and the minimal
 project scaffold. Workflow implementation starts with a Carbene 3 PySCF/TDA
 prototype in the next phase.
+
+## Current Workflow
+
+Create the local environment:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -e .
+```
+
+Run the paper-closer Carbene 3 reference path:
+
+```bash
+.venv/bin/python src/run_triplet_tda.py \
+  --xyz molecules/carbene3.xyz \
+  --charge 0 \
+  --multiplicity 3 \
+  --basis def2-svpd \
+  --xc b3lyp \
+  --nroots 1 \
+  --density-fit \
+  --grid-level 1 \
+  --chkfile runs/carbene3/tda_triplet_df_grid1_1root/scf.chk \
+  --output-dir runs/carbene3/tda_triplet_df_grid1_1root
+```
+
+Run the faster screening-mode Carbene 3 path:
+
+```bash
+.venv/bin/python src/run_triplet_tda.py \
+  --xyz molecules/carbene3.xyz \
+  --charge 0 \
+  --multiplicity 3 \
+  --basis def2-svp \
+  --xc b3lyp \
+  --nroots 1 \
+  --density-fit \
+  --grid-level 1 \
+  --chkfile runs/carbene3/tda_triplet_screen_svp_1root/scf.chk \
+  --output-dir runs/carbene3/tda_triplet_screen_svp_1root
+```
+
+Summarize completed or partial runs:
+
+```bash
+.venv/bin/python src/summarize_results.py \
+  --molecules-dir molecules \
+  --runs-root runs \
+  --output results/paper3_reproduction_summary.csv
+```

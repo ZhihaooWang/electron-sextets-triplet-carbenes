@@ -1,0 +1,16 @@
+{
+  "name": "carbene2",
+  "charge": 0,
+  "multiplicity": 3,
+  "paper_reference": "Electron Sextets as Optically Addressable Molecular Qubits: Triplet Carbenes",
+  "structure_source": "ja5c02672_si_001.pdf, S18-S19",
+  "method_geometry": "UB3LYP-D3BJ/def2-SVP",
+  "method_tddft": "UB3LYP/TDA/def2-SVPD",
+  "triplet_scf_energy_hartree_si": -7855.39513917,
+  "triplet_s2_si": 2.075060,
+  "bs_singlet_scf_energy_hartree_si": -7855.38074134,
+  "bs_singlet_s2_si": 1.007342,
+  "benchmark_lowest_excitation_ev": 2.924,
+  "benchmark_lowest_excitation_fosc": 0.002393762,
+  "notes": "Bent triplet carbene with weak triplet oscillator strength and BS-singlet follow-up target."
+}

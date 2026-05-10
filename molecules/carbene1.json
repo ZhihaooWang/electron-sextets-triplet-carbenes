@@ -1,0 +1,14 @@
+{
+  "name": "carbene1",
+  "charge": 0,
+  "multiplicity": 3,
+  "paper_reference": "Electron Sextets as Optically Addressable Molecular Qubits: Triplet Carbenes",
+  "structure_source": "ja5c02672_si_001.pdf, S11-S12",
+  "method_geometry": "UB3LYP/6-311+G(d,p)",
+  "method_tddft": "UB3LYP/TDA/6-311+G(d,p)",
+  "triplet_scf_energy_hartree_si": -3372.69258002,
+  "triplet_s2_si": 2.0758,
+  "benchmark_lowest_excitation_ev": 2.2439,
+  "benchmark_lowest_excitation_fosc": 0.3660,
+  "notes": "Bright benchmark system. SI reports a nearly linear triplet geometry and a strong first triplet excitation."
+}

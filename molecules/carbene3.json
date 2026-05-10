@@ -1,0 +1,14 @@
+{
+  "name": "carbene3",
+  "charge": 0,
+  "multiplicity": 3,
+  "paper_reference": "Electron Sextets as Optically Addressable Molecular Qubits: Triplet Carbenes",
+  "structure_source": "ja5c02672_si_001.pdf, S25-S26",
+  "method_geometry": "UB3LYP-D3BJ/def2-SVP",
+  "method_tddft": "UB3LYP/TDA/def2-SVPD",
+  "triplet_scf_energy_hartree_si": -3674.53207678,
+  "triplet_s2_si": 2.076452,
+  "benchmark_lowest_excitation_ev": 2.442,
+  "benchmark_lowest_excitation_fosc": 0.01545063,
+  "notes": "Priority 1 uses the SI optimized triplet geometry directly before implementing geometry optimization."
+}

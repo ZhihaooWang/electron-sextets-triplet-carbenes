@@ -1,0 +1,16 @@
+[project]
+name = "electron-sextets-triplet-carbenes"
+version = "0.1.0"
+description = "PySCF-first TDDFT/TDA reproduction workflow for triplet carbene qubits."
+requires-python = ">=3.12"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "pyscf>=2.6",
+  "pypdf>=4.2",
+  "scipy>=1.12",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
