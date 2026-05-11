@@ -29,23 +29,36 @@ def summarize_run(molecule: str, run_dir: Path, metadata: dict) -> dict | None:
             lowest = excitations.sort_values("energy_ev").iloc[0].to_dict()
             brightest = excitations.sort_values("oscillator_strength", ascending=False).iloc[0].to_dict()
 
+    benchmark_e = metadata.get("benchmark_lowest_excitation_ev")
+    benchmark_f = metadata.get("benchmark_lowest_excitation_fosc")
+    lowest_e = lowest.get("energy_ev")
+    lowest_f = lowest.get("oscillator_strength")
+
     return {
         "molecule": molecule,
         "run_name": run_dir.name,
         "backend": "pyscf",
-        "geometry_method": metadata.get("method_geometry"),
-        "tddft_method": metadata.get("method_tddft"),
+        "paper_geometry_method": metadata.get("method_geometry"),
+        "paper_tddft_method": metadata.get("method_tddft"),
         "charge": summary.get("charge"),
         "multiplicity": summary.get("multiplicity"),
+        "actual_xc": summary.get("xc"),
+        "actual_basis": summary.get("basis"),
         "triplet_energy": summary.get("energy_hartree"),
         "triplet_s2": summary.get("s2"),
         "tda_completed": summary.get("tda_completed"),
-        "lowest_triplet_excitation_ev": lowest.get("energy_ev"),
-        "lowest_triplet_fosc": lowest.get("oscillator_strength"),
+        "lowest_triplet_excitation_ev": lowest_e,
+        "lowest_triplet_fosc": lowest_f,
         "brightest_triplet_excitation_ev": brightest.get("energy_ev"),
         "brightest_triplet_fosc": brightest.get("oscillator_strength"),
-        "benchmark_lowest_excitation_ev": metadata.get("benchmark_lowest_excitation_ev"),
-        "benchmark_lowest_excitation_fosc": metadata.get("benchmark_lowest_excitation_fosc"),
+        "benchmark_lowest_excitation_ev": benchmark_e,
+        "benchmark_lowest_excitation_fosc": benchmark_f,
+        "delta_lowest_excitation_ev": (
+            None if lowest_e is None or benchmark_e is None else lowest_e - benchmark_e
+        ),
+        "delta_lowest_fosc": (
+            None if lowest_f is None or benchmark_f is None else lowest_f - benchmark_f
+        ),
         "grid_level": summary.get("grid_level"),
         "density_fit": summary.get("density_fit"),
         "nroots": summary.get("nroots"),
